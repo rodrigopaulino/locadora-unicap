@@ -1,12 +1,19 @@
 import basicas.Usuario;
 
-
-
 public class NegocioUsuarios {
+	
+	private static NegocioUsuarios aNegocioUsuarios;
 	private IRepositorioUsuarios repositorio;
 	
-	NegocioUsuarios(){
+	private NegocioUsuarios(){
 		
+	}
+	
+	public static NegocioUsuarios getInstancia(){
+		if(NegocioUsuarios.aNegocioUsuarios == null){
+			NegocioUsuarios.aNegocioUsuarios = new NegocioUsuarios();
+		}
+		return NegocioUsuarios.aNegocioUsuarios;
 	}
 	
 	void cadastrarUsuario(int id, String email, String senha, String nome, int cpf, 

@@ -3,84 +3,89 @@ import basicas.Usuario;
 
 
 public class Fachada {
-	private NegocioFilmes negFilmes;
-	private NegocioUsuarios negUsuarios;
+	private Fachada aFachada;
 	
-	Fachada(){
-		this.negFilmes = new NegocioFilmes();
-		this.negUsuarios = new NegocioUsuarios();
+	public Fachada getInstancia(){
+		if(this.aFachada == null){
+			this.aFachada = new Fachada();
+		}
+		return this.aFachada;
+	}
+	
+	private Fachada(){
+		
 	}
 	
 	//opções de Administrador
 	void cadastrarUsuario(int id, String email, String senha, String nome, int cpf, 
 			int fone, boolean admin){
-	negUsuarios.cadastrarUsuario(id, email, senha, nome, cpf, fone, admin);
+		NegocioUsuarios.getInstancia().cadastrarUsuario(id, email, senha, nome, cpf, fone, admin);
 	}
 	
 	void alterarUsuario(int id, String login, String senha, String nome, int cpf, String email, 
 			int fone, boolean admin){
-	negUsuarios.alterarUsuario(id, login, senha, nome, cpf, email, fone, admin);
+		NegocioUsuarios.getInstancia().alterarUsuario(id, login, senha, nome, cpf, email, fone, admin);
 	}
 		
 	void excluirUsuario(int id){
-		negUsuarios.excluirUsuario(id);
+		NegocioUsuarios.getInstancia().excluirUsuario(id);
 	}
 		
 	Usuario consultarUsuarioPorId(int id){
-		return negUsuarios.consultarId(id);	
+		return NegocioUsuarios.getInstancia().consultarId(id);	
 	}
 		
 	Usuario consultarUsuarioPorCpf(int cpf){
-		return negUsuarios.consultarCpf(cpf);	
+		return NegocioUsuarios.getInstancia().consultarCpf(cpf);	
 	}
 		
 	Usuario consultarUsuarioPorNome(String nome){
-		return negUsuarios.consultarNome(nome);	
+		return NegocioUsuarios.getInstancia().consultarNome(nome);	
 	}
 		
 	Usuario consultarUsuarioEmail(String email){
-		return negUsuarios.consultarEmail(email);	
+		return NegocioUsuarios.getInstancia().consultarEmail(email);	
 	}
 		
 	Usuario[] listarUsuarios(){
-		return negUsuarios.listarUsuarios();	
+		return NegocioUsuarios.getInstancia().listarUsuarios();	
 	}
 	
 	void cadastrarFilme(int id, String nome, String genero, double preco){
-		negFilmes.cadastrarFilme(id,nome,genero,preco);
+		NegocioFilmes.getInstancia().cadastrarFilme(id,nome,genero,preco);
 	}
 	
 	 void alterarFilme(int id, String nome, String genero, double preco){
-		 negFilmes.alterarFilme(id, nome, genero, preco);
+		 NegocioFilmes.getInstancia().alterarFilme(id, nome, genero, preco);
 	 }
 	 
 	 void excluirFilme(int id){
-		 negFilmes.excluirFilme(id);
+		 NegocioFilmes.getInstancia().excluirFilme(id);
 	 }
 	 
 	 void confirmarDevolucao(int id){
-		 negFilmes.confirmarDevolucao(id);
+		 NegocioFilmes.getInstancia().confirmarDevolucao(id);
 	 }
 	 
 	 //Opções de Usuario e Admin
 	 
 	 void locarFilme(int id){
-		 negFilmes.locarFilme(id);
+		 NegocioFilmes.getInstancia().locarFilme(id);
 	 }
 	 
 	 Filme consultarFilmePorId(int id){
-		 return negFilmes.consultarId(id);
+		 return NegocioFilmes.getInstancia().consultarId(id);
 	 }
 	 
 	 Filme consultarFilmePorNome(String nome){
-		return negFilmes.consultarNome(nome);
+		return NegocioFilmes.getInstancia().consultarNome(nome);
 	 }
 	 
 	 Filme[] listarFilmes(){
-		return negFilmes.listarFilmes(); 
+		return NegocioFilmes.getInstancia().listarFilmes(); 
 	 }
 	 
 	 Filme[] listarGenero(String genero){
-		 return negFilmes.listarGenero(genero);
+		 return NegocioFilmes.getInstancia().listarGenero(genero);
 	 }
 }

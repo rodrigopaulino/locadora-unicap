@@ -3,7 +3,19 @@ import basicas.Filme;
 
 public class NegocioFilmes {
 	
+	private static NegocioFilmes aNegocioFilmes;
 	private IRepositorioFilmes repositorio;
+	
+	private NegocioFilmes(){
+		
+	}
+	
+	public static NegocioFilmes getInstancia(){
+		if(NegocioFilmes.aNegocioFilmes == null){
+			NegocioFilmes.aNegocioFilmes = new NegocioFilmes();
+		}
+		return NegocioFilmes.aNegocioFilmes;
+	}
 	
 	void cadastrarFilme(int id, String nome, String genero, double preco){
 		Filme f = new Filme(id,nome,genero,preco);
