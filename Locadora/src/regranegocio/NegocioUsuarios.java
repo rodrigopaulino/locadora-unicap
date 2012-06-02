@@ -1,3 +1,5 @@
+package regranegocio;
+import repositorios.IRepositorioUsuarios;
 import basicas.Usuario;
 
 public class NegocioUsuarios {
@@ -16,7 +18,7 @@ public class NegocioUsuarios {
 		return NegocioUsuarios.aNegocioUsuarios;
 	}
 	
-	void cadastrarUsuario(int id, String email, String senha, String nome, int cpf, 
+	public void cadastrarUsuario(int id, String email, String senha, String nome, int cpf, 
 			int fone, boolean admin){
 	//checar se id, cpf e fone sao apenas numeros.
 	//checar se email é válido?
@@ -25,31 +27,31 @@ public class NegocioUsuarios {
 	repositorio.cadastrarUsuario(u);	
 	}
 	
-	void alterarUsuario(int id, String login, String senha, String nome, int cpf, String email, int fone, boolean admin){
+	public void alterarUsuario(int id, String login, String senha, String nome, int cpf, String email, int fone, boolean admin){
 	repositorio.alterarUsuario();
 	}
 	
-	void excluirUsuario(int id){
+	public void excluirUsuario(int id){
 	repositorio.excluirUsuario(id);
 	}
 	
-	Usuario consultarId(int id){
+	public Usuario consultarId(int id){
 	return repositorio.consultarId(id);	
 	}
 	
-	Usuario consultarCpf(int cpf){
+	public Usuario consultarCpf(int cpf){
 	return repositorio.consultarCpf(cpf);	
 	}
 	
-	Usuario consultarNome(String nome){
+	public Usuario consultarNome(String nome){
 	return repositorio.consultarNome(nome);	
 	}
 	
-	Usuario consultarEmail(String email){
+	public Usuario consultarEmail(String email){
 	return repositorio.consultarEmail(email);	
 	}
 	
-	Usuario[] listarUsuarios(){
+	public Usuario[] listarUsuarios(){
 	return repositorio.listarUsuarios();	
 	}
 	

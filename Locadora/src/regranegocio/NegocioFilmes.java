@@ -1,3 +1,5 @@
+package regranegocio;
+import repositorios.IRepositorioFilmes;
 import basicas.Filme;
 
 
@@ -17,14 +19,14 @@ public class NegocioFilmes {
 		return NegocioFilmes.aNegocioFilmes;
 	}
 	
-	void cadastrarFilme(int id, String nome, String genero, double preco){
+	public void cadastrarFilme(int id, String nome, String genero, double preco){
 		Filme f = new Filme(id,nome,genero,preco);
 		repositorio.cadastrarFilme(f);
 	}
-	 void alterarFilme(int id, String nome, String genero, double preco){
+	public void alterarFilme(int id, String nome, String genero, double preco){
 		 repositorio.alterarFilme(id, nome, genero, preco);
 	 }
-	 void excluirFilme(int id){
+	public void excluirFilme(int id){
 		 repositorio.excluirFilme(id);
 	 }
 	 
@@ -32,23 +34,23 @@ public class NegocioFilmes {
 			repositorio.confirmarDevolucao(id);
 	 }
 	 
-	 void locarFilme(int id){
+	 public void locarFilme(int id){
 		 repositorio.locarFilme(id);
 	 }
 	 
-	 Filme consultarId(int id){
+	 public Filme consultarId(int id){
 		 return repositorio.consultarId(id);
 	 }
 	 
-	 Filme consultarNome(String nome){
+	 public Filme consultarNome(String nome){
 		return repositorio.consultarNome(nome);
 	 }
 	 
-	 Filme[] listarFilmes(){
+	 public Filme[] listarFilmes(){
 		return repositorio.listarFilmes(); 
 	 }
 	 
-	 Filme[] listarGenero(String genero){
+	 public Filme[] listarGenero(String genero){
 		 return repositorio.listarGenero(genero);
 	 }
 	

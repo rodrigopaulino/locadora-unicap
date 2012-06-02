@@ -1,3 +1,6 @@
+package fachada;
+import regranegocio.NegocioFilmes;
+import regranegocio.NegocioUsuarios;
 import basicas.Filme;
 import basicas.Usuario;
 
