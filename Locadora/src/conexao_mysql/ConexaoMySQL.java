@@ -2,13 +2,17 @@ package conexao_mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException; 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import util.RegistroConsulta;
 
 public abstract class ConexaoMySQL {
 	
 	private static final String DRIVERNAME = "com.mysql.jdbc.Driver";
 	private static final String SERVERNAME = "localhost";
-	public static final String DATABASE = "locadora";
+	private static final String DATABASE = "locadora";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "password";
 	private static String status = "Não conectou...";
@@ -55,5 +59,27 @@ public abstract class ConexaoMySQL {
     public Connection ReiniciarConexao(Connection pConnection) {
         fecharConexao(pConnection);
         return this.getConexaoMySQL();
+    }
+    
+    public ArrayList getResultSetComoColecaoRegistroConsulta(ResultSet pResult) throws SQLException{
+    	ArrayList<RegistroConsulta> colecao = new ArrayList<RegistroConsulta>();
+    	RegistroConsulta registro = null;
+    	int qtd;
+    	if(pResult != null){
+    		qtd = pResult.getMetaData().getColumnCount();
+    		while(pResult.next()){
+    			if(qtd > 0){
+    				registro = new RegistroConsulta();
+        			for(int i = 1; i <= qtd; i++){
+        				registro.incluirValorColuna(pResult.getMetaData().getColumnName(i), pResult.getObject(i));
+        			}
+        			colecao.add(registro);
+        		}
+    		}
+    	}else{
+    		throw new NullPointerException();
+    	}
+    	
+    	return colecao;
     }
 }

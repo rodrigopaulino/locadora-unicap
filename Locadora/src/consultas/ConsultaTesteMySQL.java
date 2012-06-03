@@ -11,7 +11,7 @@ import conexao_mysql.ConexaoMySQL;
 public final class ConsultaTesteMySQL extends ConexaoMySQL{
 
 	private static ConsultaTesteMySQL aConsultaTesteMySQL;
-	private static final String STATEMENT_SQL = "SHOW TABLES "; 
+	private static final String STATEMENT_SQL = "SHOW DATABASES"; 
 	
 	private ConsultaTesteMySQL(){
 	}
@@ -27,21 +27,19 @@ public final class ConsultaTesteMySQL extends ConexaoMySQL{
 		Connection conexao = null;
 		PreparedStatement preStmt = null;
 		ResultSet result = null;
-		ArrayList resposta = new ArrayList();
+		ArrayList resposta = null;
 		String sql = "";
 		String sqlConnector = "";
 		
 		try{
 			sql = STATEMENT_SQL;
-			if(this.DATABASE != null && !this.DATABASE.equals("")){
-				sql = sql + sqlConnector + this.DATABASE + ";";
-				sqlConnector = "\nAND";
-			}
+			sql = sql + sqlConnector;
+			sqlConnector = "\nAND";
 			
 			conexao = this.getConexaoMySQL();
 			preStmt = conexao.prepareStatement(sql);
 			result = preStmt.executeQuery();
-			
+			resposta = this.getResultSetComoColecaoRegistroConsulta(result);
 		}catch(Exception e){
 			System.out.println("Erro");
 		}finally{
@@ -60,8 +58,8 @@ public final class ConsultaTesteMySQL extends ConexaoMySQL{
 		Iterator it;  
 		try {    
 			resposta = ConsultaTesteMySQL.getInstancia().consultar();    
-			it = resposta.iterator();   
-			while (it.hasNext()) {      
+			it = resposta.iterator();
+			if (it.hasNext()) {      
 				System.out.println(it.next());    
 			}  
 		} catch(Exception e) {    
