@@ -4,20 +4,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException; 
 
-public class ConexaoMySQL {
+public abstract class ConexaoMySQL {
 	
 	private static final String DRIVERNAME = "com.mysql.jdbc.Driver";
 	private static final String SERVERNAME = "localhost";
-	private static final String DATABASE = "locadora";
+	public static final String DATABASE = "locadora";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "password";
 	private static String status = "Não conectou...";
 	
-	public ConexaoMySQL() {
-
-    }
-
-	public static Connection getConexaoMySQL() {
+	public Connection getConexaoMySQL() {
 		Connection connection = null;
 		try {
 
@@ -43,12 +39,11 @@ public class ConexaoMySQL {
         }
 	}
 
-    public static String statusConection() {
+    public String statusConection() {
         return status;
     }
 
-    public static boolean fecharConexao(Connection pConnection) {
-
+    public boolean fecharConexao(Connection pConnection) {
         try {
         	pConnection.close();
             return true;
@@ -57,19 +52,8 @@ public class ConexaoMySQL {
         }
     }
 
-    public static Connection ReiniciarConexao(Connection pConnection) {
+    public Connection ReiniciarConexao(Connection pConnection) {
         fecharConexao(pConnection);
-        return ConexaoMySQL.getConexaoMySQL();
-    }
-    
-    /**
-     * main de teste de conexão...aplicação não deve rodar por ele
-     * @param args
-     */
-    public static void main(String[] args){
-    	System.out.println(ConexaoMySQL.statusConection());
-    	Connection con = ConexaoMySQL.getConexaoMySQL();
-    	System.out.println(ConexaoMySQL.statusConection());
-    	System.out.println(ConexaoMySQL.fecharConexao(con));
+        return this.getConexaoMySQL();
     }
 }
