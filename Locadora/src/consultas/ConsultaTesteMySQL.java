@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import util.RegistroConsulta;
 import conexao_mysql.ConexaoMySQL;
 
 public final class ConsultaTesteMySQL extends ConexaoMySQL{
@@ -59,8 +60,8 @@ public final class ConsultaTesteMySQL extends ConexaoMySQL{
 		try {    
 			resposta = ConsultaTesteMySQL.getInstancia().consultar();    
 			it = resposta.iterator();
-			if (it.hasNext()) {      
-				System.out.println(it.next());    
+			while (it.hasNext()) {      
+				System.out.println(((RegistroConsulta) it.next()).toString());    
 			}  
 		} catch(Exception e) {    
 			e.printStackTrace();  

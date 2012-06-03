@@ -71,7 +71,7 @@ public abstract class ConexaoMySQL {
     			if(qtd > 0){
     				registro = new RegistroConsulta();
         			for(int i = 1; i <= qtd; i++){
-        				registro.incluirValorColuna(pResult.getMetaData().getColumnName(i), pResult.getObject(i));
+        				registro.incluirValorColuna(pResult.getMetaData().getColumnLabel(i), pResult.getObject(i));
         			}
         			colecao.add(registro);
         		}

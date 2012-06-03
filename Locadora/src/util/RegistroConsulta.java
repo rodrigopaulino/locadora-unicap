@@ -46,4 +46,8 @@ public class RegistroConsulta {
 			return false;
 		}
 	}
+	
+	public String toString(){
+		return this.aValoresColunas.toString();
+	}
 }
