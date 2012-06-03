@@ -51,6 +51,10 @@ public final class ConsultaTesteMySQL extends ConexaoMySQL{
 		return resposta;
 	}
 	
+	/**
+	 * main para teste de consulta...a aplicação não rodará por ele.
+	 * @param pArgs
+	 */
 	public static void main(String[] pArgs) {  
 		ArrayList resposta;  
 		Iterator it;  
