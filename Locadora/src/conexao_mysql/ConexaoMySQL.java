@@ -62,6 +62,10 @@ public class ConexaoMySQL {
         return ConexaoMySQL.getConexaoMySQL();
     }
     
+    /**
+     * main de teste de conexão...aplicação não deve rodar por ele
+     * @param args
+     */
     public static void main(String[] args){
     	System.out.println(ConexaoMySQL.statusConection());
     	Connection con = ConexaoMySQL.getConexaoMySQL();
