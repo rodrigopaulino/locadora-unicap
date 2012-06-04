@@ -12,7 +12,7 @@ import conexao_mysql.ConexaoMySQL;
 public final class ConsultaTesteMySQL extends ConexaoMySQL{
 
 	private static ConsultaTesteMySQL aConsultaTesteMySQL;
-	private static final String STATEMENT_SQL = "SELECT * FROM TESTE"; 
+	private static final String STATEMENT_SQL = "SELECT * FROM USUARIO"; 
 	
 	private ConsultaTesteMySQL(){
 	}
