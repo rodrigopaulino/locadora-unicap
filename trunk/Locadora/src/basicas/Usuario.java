@@ -1,27 +1,34 @@
 package basicas;
 
+import java.sql.Date;
+
 public class Usuario {
 	private int id;
 	private String email;
 	private String senha;
 	private String nome;
-	private int cpf;	
+	private String sobrenome;
+	private int cpf;
 	private int fone;
 	private boolean admin;
+	private Date nasc;
 	
-	public Usuario(int id, String email, String senha, String nome, int cpf, 
-			int fone, boolean admin) {
-		this.id = id;
+	public Usuario(int id,String email, String senha, String nome, String sobrenome, int cpf, 
+			int fone, boolean admin, Date nasc) {
+		
+		this.setId(id);
 		this.email = email;
 		this.senha = senha;
 		this.nome = nome;
+		this.setSobrenome(sobrenome);
 		this.cpf = cpf;
-				this.fone = fone;
+		this.fone = fone;
 		this.admin = admin;
+		this.nasc = nasc;
 	}
 	
 	public String toString(){
-		String retorno = "Id: "+this.id+"\nNome: "+this.nome + "\nCPF: " +this.cpf + "\nE-mail "+this.email +
+		String retorno = "Nome: "+this.nome + "\nCPF: " +this.cpf + "\nE-mail "+this.email +
 				"\nTelefone"+this.fone;
 		if(admin)retorno+="\nFUNCIONÁRIO";
 		else retorno+="\nCLIENTE";
@@ -34,14 +41,6 @@ public class Usuario {
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getSenha() {
@@ -82,6 +81,30 @@ public class Usuario {
 
 	public void setFone(int fone) {
 		this.fone = fone;
+	}
+
+	public Date getNasc() {
+		return nasc;
+	}
+
+	public void setNasc(Date nasc) {
+		this.nasc = nasc;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
 	
 	

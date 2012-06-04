@@ -3,22 +3,21 @@ package basicas;
 public class Filme {
 	private int id;
 	private String titulo;
-	private String genero;
-	private double preco;
-	private boolean locado;
+	private int genero;
+	private int copias;
+	private String descricao;
 	
-	public Filme (int id, String nome, String genero, double preco){
+	public Filme (int id, String nome, int genero, int copias, String descricao){
 		this.id = id;
 		this.titulo = nome;
 		this.genero = genero;
-		this.preco = preco;
-		this.locado = false;
+		this.copias = copias;
+		this.descricao = descricao;
 	}
 	
 	public String toString(){
-		String retorno = "Título: "+this.titulo + "/nGênero: " +this.genero + "/nPreço "+this.preco;
-		if(locado)retorno+="/nLOCADO";
-		else retorno+="/nDISPONÍVEL";
+		String retorno = "Título: "+this.titulo + "\nGênero: " +this.genero + "\nCópias"+this.copias + 
+				"\nDescrição"+this.descricao;
 		return retorno; 
 	}
 	
@@ -38,29 +37,31 @@ public class Filme {
 		this.titulo = titulo;
 	}
 
-	public String getGenero() {
+	public int gettGenero() {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(int genero) {
 		this.genero = genero;
 	}
 
-	public double getPreco() {
-		return preco;
+	public int getCopias() {
+		return copias;
 	}
 
-	public void setPreco(double preco) {
-		this.preco = preco;
+	public void setCopias(int copias) {
+		this.copias = copias;
 	}
 
-	public boolean isReservado() {
-		return locado;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setReservado(boolean reservado) {
-		this.locado = reservado;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
+
+	
 	
 	
 }
